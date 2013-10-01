@@ -27,7 +27,9 @@ object Real_anki {
     
     def main(args : Array[String]) {
 	println("start")
-	val plist = XML.loadFile( new File("UserPhraseDictionary.plist") )
+	val input = readLine("input file name>")
+	val output = readLine("output file name>")
+	val plist = XML.loadFile( new File(input) )
 	val title = (plist \ "dict" \ "key").text
 	val eachPhrase = (plist \ "dict" \  "dict" )
 	println(eachPhrase.size)
@@ -77,7 +79,7 @@ object Real_anki {
 	})
 	    val scripts = mergeAllElements(eTitles.iterator,jTitles.iterator, eAudio.iterator, eConv1.iterator, eConv2.iterator, eConv3.iterator, jConv1.iterator, jConv2.iterator, jConv3.iterator, eSound1.iterator, eSound2.iterator, eSound3.iterator, comments.iterator)
 	import java.io.PrintWriter
-	val out = new PrintWriter("real_anki.txt")
+	val out = new PrintWriter(output)
 	scripts.foreach(out.print(_))
 	out.close
     }  
