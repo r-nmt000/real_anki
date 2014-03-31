@@ -27,7 +27,7 @@ object Real_anki {
     
     def main(args : Array[String]) {
 	println("start")
-	val input = readLine("input file name>")
+	val input = "UserPhraseDictionary.plist" 
 	val output = readLine("output file name>")
 	val plist = XML.loadFile( new File(input) )
 	val title = (plist \ "dict" \ "key").text
